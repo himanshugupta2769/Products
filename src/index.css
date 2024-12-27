@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.custom-paginator .p-highlight {
+  font-weight: bold;
+  color: #005457 !important;
+  border-radius: 2rem;
+  background-color: #e0f7f9;
+}
+
+.custom-paginator .p-paginator-page {
+  border-radius: 50%;
+  border: 0px solid none;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.custom-paginator .p-paginator-page:active {
+  background-color: #009a8e;
+  border: 0px solid #009a8e;
+  transform: scale(1);
+}
