@@ -18,6 +18,10 @@ const PrivateRoute = () => {
         <Route path="/admin/products" element={<ProductList />} />
         <Route path="/admin/profile" element={<Profile />} />
         <Route path="/logout" element={<Logout />} />
+
+        <Route path="/products/edit-products" element={<Logout />} />
+        <Route path="/products/view-roducts" element={<Logout />} />
+
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </Layout>

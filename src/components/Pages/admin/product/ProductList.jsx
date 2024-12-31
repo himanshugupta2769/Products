@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Paginator } from "primereact/paginator";
+import { MdPreview } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 const ProductList = () => {
   const [product, setProducts] = useState([]);
   const [error, setError] = useState(null);
@@ -8,7 +10,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:3004/products");
+        const res = await fetch("http://localhost:3000/products");
         if (!res.ok) {
           throw new Error("network response is not ok");
         }
@@ -59,7 +61,7 @@ const ProductList = () => {
               <th>Price</th>
               <th>Image</th>
               <th>Created At</th>
-              {/*<th>Action</th>*/}
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -72,8 +74,27 @@ const ProductList = () => {
                     <td>{items.brand}</td>
                     <td>{items.description}</td>
                     <td>{items.price}</td>
-                    <td>{items.imageFilename}</td>
-                    <td>{items.createdAt}</td>
+                    <td><img src={"http://localhost:3000/images/" + items.imageFilename} alt="..." width="100" /></td>
+                    <td>{items.createdAt.slice(0,10)}</td>
+                    <td style={{ whiteSpace: "nowrap" }}>
+                      <Link
+                        to="/products/show-products"
+                        //state={{ religion }}
+                        className="custom-link text-decoration-none"
+                      >
+                        <MdPreview size={25} />
+                      </Link>
+                      <span className="ms-2 me-2 mb-2 text-secondary opacity-75">
+                        |
+                      </span>
+                      <Link
+                        to="/products/edit-products"
+                        // state={{ religion }}
+                        className="custom-link text-decoration-none"
+                      >
+                        <FaEdit size={20} />
+                      </Link>
+                    </td>
                   </tr>
                 );
               })
